@@ -34,9 +34,6 @@ public class FragmentABC extends Fragment {
     ProgressDialog progressDialog;
     Context context;
 
-    public FragmentABC () {
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -49,8 +46,9 @@ public class FragmentABC extends Fragment {
         super.onCreate(savedInstanceState);
         context = getActivity();
 
+        // Set progress bar
         progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading Data.. Please wait...");
+        progressDialog.setMessage(getString(R.string.loading_data));
         progressDialog.setIndeterminate(false);
         progressDialog.setCancelable(false);
         progressDialog.show();

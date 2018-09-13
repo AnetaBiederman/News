@@ -35,9 +35,6 @@ public class FragmentCNN extends Fragment {
     ProgressDialog progressDialog;
     Context context;
 
-    public FragmentCNN () {
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -51,7 +48,7 @@ public class FragmentCNN extends Fragment {
         context = getActivity();
 
         progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading Data.. Please wait...");
+        progressDialog.setMessage(getString(R.string.loading_data));
         progressDialog.setIndeterminate(false);
         progressDialog.setCancelable(false);
         progressDialog.show();

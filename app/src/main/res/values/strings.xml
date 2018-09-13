@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">News</string>
     <string name="detail">Detail</string>
+    <string name="loading_data">Loading Data.. Please wait...</string>
+    <string name="ccn_news">CCN news</string>
+    <string name="abc_news">ABC news</string>
+    <string name="example_date">2018-20-02</string>
+    <string name="title">Title</string>
+    <string name="author">author</string>
+    <string name="article">article</string>
+    <string name="date">date</string>
 </resources>

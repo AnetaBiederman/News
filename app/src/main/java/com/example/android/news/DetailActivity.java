@@ -8,27 +8,37 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity {
+
+    @BindView(R.id.detail_title)
+    TextView tvTitle;
+    @BindView(R.id.detail_date)
+    TextView tvDate;
+    @BindView(R.id.detail_author)
+    TextView tvAuthor;
+    @BindView(R.id.detail_content)
+    TextView tvContent;
+    @BindView(R.id.detail_picture)
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        ButterKnife.bind(this);
+
         //Get the properties of the Place Object from the intent
         Bundle bundle = getIntent().getExtras();
-
         String title = bundle.getString("title");
         String date = bundle.getString("publishedAt");
         String author = bundle.getString("author");
         String content = bundle.getString("content");
 
-        TextView tvTitle = findViewById(R.id.detail_title);
-        ImageView imageView = findViewById(R.id.detail_picture);
-        TextView tvDate = findViewById(R.id.detail_date);
-        TextView tvAuthor = findViewById(R.id.detail_author);
-        TextView tvContent = findViewById(R.id.detail_content);
-
+        // Set content to correct views
         tvTitle.setText(title);
         tvDate.setText(date);
         tvAuthor.setText(author);

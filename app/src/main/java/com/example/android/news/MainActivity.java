@@ -1,41 +1,36 @@
 package com.example.android.news;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.support.v7.widget.RecyclerView;
-
-import com.example.android.news.adapter.NewsAdapter;
 import com.example.android.news.adapter.ViewPagerAdapter;
 import com.example.android.news.fragment.FragmentABC;
 import com.example.android.news.fragment.FragmentCNN;
-import com.example.android.news.model.News;
 
-import java.util.List;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    @BindView(R.id.tablayout_id)
+    TabLayout tabLayout;
+    @BindView(R.id.viewpage_id)
+    ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        tabLayout = findViewById(R.id.tablayout_id);
-        viewPager = findViewById(R.id.viewpage_id);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.addFragment(new FragmentCNN(), "CCN news");
-        viewPagerAdapter.addFragment(new FragmentABC(), "ABC news");
+        viewPagerAdapter.addFragment(new FragmentCNN(), getString(R.string.ccn_news));
+        viewPagerAdapter.addFragment(new FragmentABC(), getString(R.string.abc_news));
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

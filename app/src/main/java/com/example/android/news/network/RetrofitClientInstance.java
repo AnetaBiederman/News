@@ -1,10 +1,7 @@
 package com.example.android.news.network;
 
-import com.example.android.news.model.News;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.util.Date;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -19,7 +16,6 @@ public class RetrofitClientInstance {
 
     /**
      * root URLS= of API which will be called
-     * URL for news is: https://newsapi.org/v2/everything?sources=cnn&apiKey=16cb9678f5f14cf699cb6913bab2564c
      */
     private static final String BASE_URL = "https://newsapi.org/";
 
@@ -28,11 +24,13 @@ public class RetrofitClientInstance {
      */
     private static Retrofit getRetrofitInstance() {
 
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+        Gson gson = new GsonBuilder().
+                setDateFormat("yyyy-MM-dd").
+                create();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         return retrofit;
     }

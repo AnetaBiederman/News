@@ -12,9 +12,6 @@ public interface GetDataService {
     String SOURCE_CNN = "cnn";
     String SOURCE_ABC_NEWS = "abc-news";
     String EVERYTHING = "everything";
-    String TOP_HEADLINES = "top-headlines";
-
-
 
     // Retrofit get annotation with our URL
     // And our method that will return us the List of NewsList

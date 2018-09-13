@@ -3,9 +3,6 @@ package com.example.android.news.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.util.Date;
 
 public class News {
     @SerializedName("author")

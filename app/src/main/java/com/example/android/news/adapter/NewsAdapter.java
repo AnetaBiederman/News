@@ -3,7 +3,6 @@ package com.example.android.news.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +15,10 @@ import com.example.android.news.model.News;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
@@ -36,16 +32,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     class NewsViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.title_tv)
         TextView txtTitle;
+        @BindView(R.id.date_tv)
         TextView txtDate;
-        private ImageView coverImage;
+        @BindView(R.id.cover_image)
+        ImageView coverImage;
 
         public NewsViewHolder(View itemView) {
             super(itemView);
-
-            coverImage = itemView.findViewById(R.id.cover_image);
-            txtTitle = itemView.findViewById(R.id.title_tv);
-            txtDate = itemView.findViewById(R.id.date_tv);
+            ButterKnife.bind(this, itemView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
