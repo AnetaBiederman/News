@@ -1,6 +1,7 @@
 package com.example.android.news.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.news.DetailActivity;
 import com.example.android.news.R;
 import com.example.android.news.model.News;
 import com.jakewharton.picasso.OkHttp3Downloader;
@@ -38,12 +40,25 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         TextView txtDate;
         private ImageView coverImage;
 
-        public NewsViewHolder(View view) {
-            super(view);
+        public NewsViewHolder(View itemView) {
+            super(itemView);
 
-            coverImage = view.findViewById(R.id.cover_image);
-            txtTitle = view.findViewById(R.id.title_tv);
-            txtDate = view.findViewById(R.id.date_tv);
+            coverImage = itemView.findViewById(R.id.cover_image);
+            txtTitle = itemView.findViewById(R.id.title_tv);
+            txtDate = itemView.findViewById(R.id.date_tv);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra("title", newsList.get(getAdapterPosition()).getTitle());
+                    intent.putExtra("urlToImage", newsList.get(getAdapterPosition()).getUrlToImage());
+                    intent.putExtra("publishedAt", newsList.get(getAdapterPosition()).getPublishedAt());
+                    intent.putExtra("author", newsList.get(getAdapterPosition()).getAuthor());
+                    intent.putExtra("content", newsList.get(getAdapterPosition()).getContent());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 

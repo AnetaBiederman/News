@@ -1,7 +1,10 @@
 package com.example.android.news.network;
 
+import com.example.android.news.model.News;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.Date;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,14 +27,19 @@ public class RetrofitClientInstance {
      * Get Retrofit Instance
      */
     private static Retrofit getRetrofitInstance() {
-        return new Retrofit.Builder()
+
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        return retrofit;
     }
 
     /**
      * Get data service
+     *
      * @return data Service
      */
     public static GetDataService getDataService() {
